@@ -11,12 +11,16 @@ import { retry, catchError, tap } from 'rxjs/operators';
 export class ApiService {
 
   private SERVER_URL = "http://localhost:8000/api/orders";
-
+  httpreq = ""
   constructor(private httpClient: HttpClient) { }
   
 
-  public get(){  
-		return this.httpClient.get(this.SERVER_URL);  
+  public get(parametre=null){  
+    if(parametre != null)
+    {
+        this.httpreq = "customer="+parametre.fullName+"&status="+parametre.status
+    }
+		return this.httpClient.get(this.SERVER_URL, {  params: new HttpParams({fromString: this.httpreq})});  
   }  
   
   handleError(error: HttpErrorResponse) {

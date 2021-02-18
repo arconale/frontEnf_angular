@@ -13,6 +13,9 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+  ]
 })
 export class AppModule { }

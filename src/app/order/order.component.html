@@ -1,4 +1,23 @@
 <div class="mat-elevation-z8">
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Customer Name</mat-label>
+      <input matInput id="fullName" type="text" formControlName="fullName">
+    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <select matNativeControl id="status"  formControlName="status">
+          <option value=""></option>
+         <option value="in_production"> In production</option>
+         <option value="pending"> Pending</option>
+         <option value="cancelled"> Cancelled</option>
+        </select>
+      </mat-form-field>
+      <br/>
+     <button class="button" mat-raised-button color="primary" type="submit">Submit</button>
+     <button class="button" mat-raised-button (click)="onClear()">Clear</button>
+  
+  </form>
 <table mat-table [dataSource]="dataSource" >
 
     <!--- Note that these columns can be defined in any order.
